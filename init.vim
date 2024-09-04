@@ -81,6 +81,9 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 
+vnoremap <C-c> "+y
+vnoremap <C-v> "+p
+
 " unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
