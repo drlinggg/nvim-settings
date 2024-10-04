@@ -11,20 +11,36 @@ set autoindent
 
 call plug#begin('~/.vim/plugged')
 
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+    "highlighting"
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    Plug 'bfrg/vim-c-cpp-modern'
+
     "themes"
-    Plug 'joshdick/onedark.vim'
+    "Plug 'joshdick/onedark.vim'"
+    Plug 'Mofiqul/dracula.nvim'
 
 call plug#end()
 
-colorscheme onedark
+colorscheme dracula
 
 map <C-n> :NERDTreeToggle<CR>
+
+"transparent background"
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        hi Normal guibg=#282A36 ctermbg=253
+        let t:is_transparent = 0
+    endif
+endfunction
+nnoremap <C-t> : call Toggle_transparent()<CR>
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -44,6 +60,10 @@ endif
 
 " air-line
 let g:airline_powerline_fonts = 1
+
+" highlight
+let g:lsp_cxx_hl_use_text_props = 1
+let g:cpp_simple_highlight = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
