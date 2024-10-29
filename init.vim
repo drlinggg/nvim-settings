@@ -11,12 +11,12 @@ set autoindent
 
 call plug#begin('~/.vim/plugged')
 
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    "highlighting"
     Plug 'jackguo380/vim-lsp-cxx-highlight'
+
     Plug 'bfrg/vim-c-cpp-modern'
 
     "themes"
@@ -29,7 +29,7 @@ colorscheme dracula
 
 map <C-n> :NERDTreeToggle<CR>
 
-"transparent background"
+" background
 let t:is_transparent = 0
 function! Toggle_transparent()
     if t:is_transparent == 0
