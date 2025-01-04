@@ -27,9 +27,15 @@ call plug#end()
 
 colorscheme dracula
 
+" Перемещение выделенного текста вверх
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+
+" Перемещение выделенного текста вниз
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+
+
 map <C-n> :NERDTreeToggle<CR>
 
-" background
 let t:is_transparent = 0
 function! Toggle_transparent()
     if t:is_transparent == 0
