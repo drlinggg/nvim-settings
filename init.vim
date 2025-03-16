@@ -11,27 +11,27 @@ set autoindent
 
 call plug#begin('~/.vim/plugged')
 
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
 
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-
-    Plug 'bfrg/vim-c-cpp-modern'
+    Plug 'https://github.com/fannheyward/coc-pyright'
 
     "themes"
-    "Plug 'joshdick/onedark.vim'"
-    Plug 'Mofiqul/dracula.nvim'
+    Plug 'joshdick/onedark.vim'"
+    "Plug 'Mofiqul/dracula.nvim'"
 
 call plug#end()
 
-colorscheme dracula
+colorscheme onedark
 
 " Перемещение выделенного текста вверх
 vnoremap <C-Up> :m '<-2<CR>gv=gv
 
 " Перемещение выделенного текста вниз
 vnoremap <C-Down> :m '>+1<CR>gv=gv
+
+" let g:python3_host_prog="usr/bin/python3"
 
 
 map <C-n> :NERDTreeToggle<CR>
