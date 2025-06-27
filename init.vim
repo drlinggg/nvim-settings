@@ -1,4 +1,3 @@
-syntax on
 set mouse=v
 set number
 set relativenumber
@@ -10,20 +9,32 @@ set softtabstop=4
 set autoindent
 
 call plug#begin('~/.vim/plugged')
-
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-	
     Plug 'neoclide/coc.nvim', {'branch': 'release'}"
-
     Plug 'https://github.com/fannheyward/coc-pyright'
-
+    Plug 'elliothatch/burgundy.vim'
     "themes"
-    Plug 'joshdick/onedark.vim'"
+    "Plug 'joshdick/onedark.vim'"
     "Plug 'Mofiqul/dracula.nvim'"
-
 call plug#end()
 
-colorscheme onedark
+function! s:setup_conceal()
+  hi Conceal guibg=NONE ctermbg=NONE
+  hi Conceal guifg=#ff0000 ctermfg=48
+  hi Conceal gui=underline cterm=underline
+endfunction
+augroup custom_conceal
+  autocmd!
+  autocmd ColorScheme * call s:setup_conceal()
+  autocmd VimEnter * call s:setup_conceal()
+augroup END
+colorscheme burgundy
+
+" Automatically load pyright
+let g:coc_global_extensions = ['coc-pyright'] 
+" Disable auto-import suggestions for clarity, if desired
+let g:coc_preferences_autoImportSuggest = 'none'
+
 
 " Перемещение выделенного текста вверх
 vnoremap <C-Up> :m '<-2<CR>gv=gv
@@ -35,14 +46,14 @@ vnoremap <C-Down> :m '>+1<CR>gv=gv
 
 
 map <C-n> :NERDTreeToggle<CR>
-
+hi Normal guibg=#330f25
 let t:is_transparent = 0
 function! Toggle_transparent()
     if t:is_transparent == 0
         hi Normal guibg=NONE ctermbg=NONE
         let t:is_transparent = 1
     else
-        hi Normal guibg=#282A36 ctermbg=253
+        hi Normal guibg=#330f25 ctermbg=0
         let t:is_transparent = 0
     endif
 endfunction
@@ -109,6 +120,17 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
+
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 10gt 
 
 " unicode symbols
 let g:airline_left_sep = '»'
